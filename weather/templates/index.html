@@ -1,95 +1,146 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title>Weather App</title>
+<title>Weather App</title>
 
-```
 <style>
-    body{
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to right,#4facfe,#00f2fe);
-        text-align:center;
-        padding-top:80px;
-    }
 
-    .container{
-        background:white;
-        width:350px;
-        margin:auto;
-        padding:30px;
-        border-radius:12px;
-        box-shadow:0 5px 20px rgba(0,0,0,0.2);
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, sans-serif;
+}
 
-    h2{
-        margin-bottom:20px;
-    }
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(-45deg,#4facfe,#00f2fe,#43e97b,#38f9d7);
+background-size:400% 400%;
+animation:gradientMove 10s ease infinite;
+}
 
-    input{
-        padding:10px;
-        width:70%;
-        border-radius:6px;
-        border:1px solid #ccc;
-    }
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
-    button{
-        padding:10px 15px;
-        border:none;
-        background:#4facfe;
-        color:white;
-        border-radius:6px;
-        cursor:pointer;
-    }
+.container{
+width:380px;
+padding:35px;
+border-radius:20px;
+text-align:center;
+background:rgba(255,255,255,0.2);
+backdrop-filter:blur(15px);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+color:white;
+}
 
-    button:hover{
-        background:#2d8cf0;
-    }
+h1{
+margin-bottom:25px;
+letter-spacing:1px;
+}
 
-    .weather-box{
-        margin-top:20px;
-        background:#f4f4f4;
-        padding:15px;
-        border-radius:10px;
-    }
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-bottom:15px;
+outline:none;
+font-size:16px;
+}
 
-    .error{
-        color:red;
-        margin-top:10px;
-    }
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#ffffff;
+color:#333;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#f1f1f1;
+}
+
+.weather{
+margin-top:25px;
+}
+
+.city{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.temp{
+font-size:45px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.details{
+font-size:16px;
+margin-top:10px;
+line-height:1.8;
+}
+
+.error{
+margin-top:15px;
+background:rgba(255,0,0,0.2);
+padding:10px;
+border-radius:8px;
+}
+
 </style>
-```
-
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>🌤 Weather Application</h2>
+<h1>🌤 Weather App</h1>
 
 <form method="POST">
-    {% csrf_token %}
-    <input type="text" name="city" placeholder="Enter city name">
-    <button type="submit">Check</button>
+{% csrf_token %}
+
+<input type="text" name="city" placeholder="Enter City Name">
+
+<button type="submit">Check Weather</button>
+
 </form>
-
-{% if error %}
-
-<p class="error">{{ error }}</p>
-{% endif %}
 
 {% if weather %}
 
-<div class="weather-box">
-<h3>Weather Details</h3>
+<div class="weather">
 
-<p><b>Temperature:</b> {{ weather.temperature }} °C</p>
-<p><b>Humidity:</b> {{ weather.humidity }} %</p>
-<p><b>Wind Speed:</b> {{ weather.wind_speed }} m/s</p>
-<p><b>Description:</b> {{ weather.description }}</p>
+<div class="city">{{weather.city}}</div>
+
+<div class="temp">🌡 {{weather.temperature}}°C</div>
+
+<div class="details">
+💧 Humidity: {{weather.humidity}} % <br>
+🌬 Wind Speed: {{weather.wind}} m/s <br>
+☁ {{weather.description}}
+</div>
 
 </div>
+
+{% endif %}
+
+{% if error %}
+
+<div class="error">
+{{error}}
+</div>
+
 {% endif %}
 
 </div>
