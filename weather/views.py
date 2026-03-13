@@ -18,6 +18,7 @@ def index(request):
         # Check if API returned success
         if response.status_code == 200:
             weather_data = {
+                "city": city,
                 "temperature": data["main"]["temp"],
                 "humidity": data["main"]["humidity"],
                 "wind_speed": data["wind"]["speed"],

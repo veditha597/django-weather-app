@@ -121,14 +121,20 @@ border-radius:8px;
 
 <div class="weather">
 
-<div class="city">{{weather.city}}</div>
+<div class="icon">☀</div>
 
-<div class="temp">🌡 {{weather.temperature}}°C</div>
+<div class="city">
+{{ weather.city }}
+</div>
+
+<div class="temp">
+{{ weather.temperature }}°C
+</div>
 
 <div class="details">
-💧 Humidity: {{weather.humidity}} % <br>
-🌬 Wind Speed: {{weather.wind}} m/s <br>
-☁ {{weather.description}}
+💧 Humidity: {{ weather.humidity }} % <br>
+🌬 Wind Speed: {{ weather.wind }} m/s <br>
+☁ {{ weather.description }}
 </div>
 
 </div>
