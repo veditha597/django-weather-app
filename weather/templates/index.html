@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Weather App</title>
+
+```
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right,#4facfe,#00f2fe);
+        text-align:center;
+        padding-top:80px;
+    }
+
+    .container{
+        background:white;
+        width:350px;
+        margin:auto;
+        padding:30px;
+        border-radius:12px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    h2{
+        margin-bottom:20px;
+    }
+
+    input{
+        padding:10px;
+        width:70%;
+        border-radius:6px;
+        border:1px solid #ccc;
+    }
+
+    button{
+        padding:10px 15px;
+        border:none;
+        background:#4facfe;
+        color:white;
+        border-radius:6px;
+        cursor:pointer;
+    }
+
+    button:hover{
+        background:#2d8cf0;
+    }
+
+    .weather-box{
+        margin-top:20px;
+        background:#f4f4f4;
+        padding:15px;
+        border-radius:10px;
+    }
+
+    .error{
+        color:red;
+        margin-top:10px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🌤 Weather Application</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="city" placeholder="Enter city name">
+    <button type="submit">Check</button>
+</form>
+
+{% if error %}
+
+<p class="error">{{ error }}</p>
+{% endif %}
+
+{% if weather %}
+
+<div class="weather-box">
+<h3>Weather Details</h3>
+
+<p><b>Temperature:</b> {{ weather.temperature }} °C</p>
+<p><b>Humidity:</b> {{ weather.humidity }} %</p>
+<p><b>Wind Speed:</b> {{ weather.wind_speed }} m/s</p>
+<p><b>Description:</b> {{ weather.description }}</p>
+
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
