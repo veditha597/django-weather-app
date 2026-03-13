@@ -9,7 +9,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI', sans-serif;
+font-family:Segoe UI, sans-serif;
 }
 
 body{
@@ -17,9 +17,9 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background: linear-gradient(270deg,#4facfe,#00f2fe,#43e97b,#38f9d7);
-background-size:800% 800%;
-animation:gradientMove 12s ease infinite;
+background: linear-gradient(-45deg,#4facfe,#00f2fe,#43e97b,#38f9d7);
+background-size:400% 400%;
+animation:gradientMove 10s ease infinite;
 }
 
 @keyframes gradientMove{
@@ -29,27 +29,26 @@ animation:gradientMove 12s ease infinite;
 }
 
 .container{
-width:400px;
-padding:40px;
-border-radius:25px;
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(15px);
-box-shadow:0 15px 35px rgba(0,0,0,0.25);
+width:380px;
+padding:35px;
+border-radius:20px;
 text-align:center;
+background:rgba(255,255,255,0.2);
+backdrop-filter:blur(15px);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
 color:white;
 }
 
 h1{
 margin-bottom:25px;
-font-weight:600;
 letter-spacing:1px;
 }
 
 input{
 width:100%;
-padding:14px;
+padding:12px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 margin-bottom:15px;
 outline:none;
 font-size:16px;
@@ -57,15 +56,14 @@ font-size:16px;
 
 button{
 width:100%;
-padding:14px;
+padding:12px;
 border:none;
-border-radius:12px;
-background:white;
+border-radius:10px;
+background:#ffffff;
 color:#333;
 font-size:16px;
 cursor:pointer;
 transition:0.3s;
-font-weight:600;
 }
 
 button:hover{
@@ -77,32 +75,28 @@ background:#f1f1f1;
 margin-top:25px;
 }
 
-.icon{
-font-size:50px;
+.city{
+font-size:24px;
 margin-bottom:10px;
 }
 
-.city{
-font-size:26px;
-font-weight:600;
-}
-
 .temp{
-font-size:50px;
+font-size:45px;
 font-weight:bold;
-margin:10px 0;
+margin-bottom:10px;
 }
 
 .details{
-font-size:17px;
+font-size:16px;
+margin-top:10px;
 line-height:1.8;
 }
 
 .error{
 margin-top:15px;
-background:rgba(255,0,0,0.25);
+background:rgba(255,0,0,0.2);
 padding:10px;
-border-radius:10px;
+border-radius:8px;
 }
 
 </style>
@@ -127,11 +121,9 @@ border-radius:10px;
 
 <div class="weather">
 
-<div class="icon">☀</div>
-
 <div class="city">{{weather.city}}</div>
 
-<div class="temp">{{weather.temperature}}°C</div>
+<div class="temp">🌡 {{weather.temperature}}°C</div>
 
 <div class="details">
 💧 Humidity: {{weather.humidity}} % <br>
